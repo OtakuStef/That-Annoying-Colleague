@@ -1,11 +1,15 @@
 # That-Annoying-Colleague
 Plan until 12.11.2023:
+
 Leonard:
 - UI: Main Menu, UI Basic Design for Energy, Timer, Booster etc
+
 Stefan:
 - Level Design, Arena, Spawn Objects
+
 Mihi:
 - Charakter Movement, PickUp Objects
+
 Timur:
 - Audio Mixer (Game Music, Effects, Background Noise, etc.), Music/Sound Implementation
 
