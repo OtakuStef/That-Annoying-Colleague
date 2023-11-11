@@ -1,28 +1,33 @@
 # That-Annoying-Colleague
-Plan until 12.11.2023:
+Next Meeting: 
+ToDos/Done Task:
 
 Leonard:
 - UI: Main Menu, UI Basic Design for Energy, Timer, Booster etc
+- Controls shown in menu
+- Split Screen
 
 Stefan:
 - Level Design, Arena, Spawn Objects
+- PowerUps (HP Up, Damage Increase, Speed up, Schild)
+- Durability of objects (Collision with env, player, other objects)
 
 Mihi:
 - Charakter Movement, PickUp Objects
+- Pump/Stamina Mechanic after picking up objects
+- Camera Movement
+- First Person View - Player visibility
+- Player Manager
 
 Timur:
 - Audio Mixer (Game Music, Effects, Background Noise, etc.), Music/Sound Implementation
-
-Open Tasks:
-- Controls shown in menu
-- Manager: Game, Sound, Player
-- Pump/Stamina Mechanic after picking up objects
-- Camera Movement
-- Split Screen
-- Player Models or Stages
 - Achievements/Rewards
-- Object detection (On pickup)
 - Win Counter
 - Timer
-- First Person View - Player visibility
-- Durability of objects (Collision with env, player, other objects)
+- Sound Manager
+
+
+Open Tasks:
+- Gamemanager
+- Player Models or Stages (Extra if Time)
+
