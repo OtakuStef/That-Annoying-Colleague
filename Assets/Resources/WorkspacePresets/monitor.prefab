@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7517958839455116881}
   - component: {fileID: 4818975821152141011}
   - component: {fileID: -6795359685190002331}
+  - component: {fileID: -8054919351945045650}
   m_Layer: 0
   m_Name: monitor
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,3 +134,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8054919351945045650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242261140046009483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45ba305856f47e45bfbc120c8398354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurabilty: 3

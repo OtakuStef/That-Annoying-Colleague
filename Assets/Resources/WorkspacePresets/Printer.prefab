@@ -177,9 +177,10 @@ GameObject:
   - component: {fileID: 5698014819107375512}
   - component: {fileID: 1006490032595612593}
   - component: {fileID: 7629277184801263293}
+  - component: {fileID: 4662145774005600360}
   m_Layer: 0
   m_Name: Printer
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,3 +250,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.4611616, y: 5.8975124, z: 10.78871}
   m_Center: {x: -2.5801523, y: 2.3536038, z: -0.13995987}
+--- !u!114 &4662145774005600360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920439388256072730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45ba305856f47e45bfbc120c8398354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurabilty: 3
