@@ -4,7 +4,7 @@ ToDos/Done Task:
 
 Leonard:
 - UI: Main Menu, UI Basic Design for Energy, Timer, Booster etc
-- Controls shown in menu
+- Controls shown in menu DONE
 - Split Screen
 
 Stefan:
