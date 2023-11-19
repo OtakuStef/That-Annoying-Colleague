@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7835597181630718204}
   - component: {fileID: -6575278437412977464}
   - component: {fileID: -5476281481800602171}
+  - component: {fileID: 4590711474429623135}
   m_Layer: 0
   m_Name: Stehlampe (5)
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4590711474429623135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698920253813318412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45ba305856f47e45bfbc120c8398354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurabilty: 4
 --- !u!1 &2848147762879231667
 GameObject:
   m_ObjectHideFlags: 0

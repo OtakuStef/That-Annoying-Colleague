@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5771064995880923255}
   - component: {fileID: -1614588060970104889}
   - component: {fileID: 5084095929403115769}
+  - component: {fileID: 8707591471332207214}
   m_Layer: 0
   m_Name: CRT Monitor with ambient oclusion5
-  m_TagString: Untagged
+  m_TagString: Throwable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3, y: 1.8, z: 1.8}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8707591471332207214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470290448063765864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45ba305856f47e45bfbc120c8398354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDurabilty: 4
+  currentDurability: 0
 --- !u!1 &2830883657845182188
 GameObject:
   m_ObjectHideFlags: 0
