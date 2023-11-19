@@ -24,7 +24,19 @@ public class PlayerScript : MonoBehaviour
             TakeDamage(20);
         }
         if(Input.GetKeyDown(KeyCode.A)){
-            powerUp.SetImage("ENERGY");
+            powerUp.SetImage("HEALTH");
+        }
+        if(Input.GetKeyDown(KeyCode.S)){
+            powerUp.SetImage("DMG");
+        }
+        if(Input.GetKeyDown(KeyCode.D)){
+            powerUp.SetImage("SPEED");
+        }
+        if(Input.GetKeyDown(KeyCode.F)){
+            powerUp.SetImage("SHIELD");
+        }
+        if(Input.GetKeyDown(KeyCode.G)){
+            powerUp.SetImage("NONE");
         }
         
     }

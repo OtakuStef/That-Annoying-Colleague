@@ -9,21 +9,41 @@ public class PowerUpUI : MonoBehaviour
     public string currentSprite;
 
     public Image HealthImg;
-    public Image EnergyImg;
+    public Image StrongImg;
+    public Image ShieldImg;
+    public Image SpeedImg;
 
     public void SetImage(string powerUP){
 
         if(powerUP == "HEALTH"){
             HealthImg.enabled = true;
-            EnergyImg.enabled = false;
+            StrongImg.enabled = false;
+            ShieldImg.enabled = false;
+            SpeedImg.enabled = false;
         }
-        if(powerUP == "ENERGY"){
+        if(powerUP == "DMG"){
             HealthImg.enabled = false;
-            EnergyImg.enabled = true;
+            StrongImg.enabled = true;
+            ShieldImg.enabled = false;
+            SpeedImg.enabled = false;
+        }
+        if(powerUP == "SPEED"){
+            HealthImg.enabled = false;
+            StrongImg.enabled = false;
+            ShieldImg.enabled = false;
+            SpeedImg.enabled = true;
+        }
+        if(powerUP == "SHIELD"){
+            HealthImg.enabled = false;
+            StrongImg.enabled = false;
+            ShieldImg.enabled = true;
+            SpeedImg.enabled = false;
         }
         if(powerUP == "NONE"){
-            EnergyImg.enabled = false;
+            StrongImg.enabled = false;
             HealthImg.enabled = false;
+            ShieldImg.enabled = false;
+            SpeedImg.enabled = false;
         }
 
         currentSprite = powerUP;
@@ -33,9 +53,7 @@ public class PowerUpUI : MonoBehaviour
 
     void Start()
     {
-        currentSprite = "NONE";
-        HealthImg.enabled = false;
-        EnergyImg.enabled = false;
+        SetImage("NONE");
     }
 
 }
