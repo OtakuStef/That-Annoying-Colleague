@@ -13,11 +13,13 @@ Stefan:
 - Durability of objects (Collision with env, player, other objects)
 
 Mihi:
-- Charakter Movement, PickUp Objects
-- Pump/Stamina Mechanic after picking up objects
-- Camera Movement
-- First Person View - Player visibility
-- Player Manager
+- Charakter Movement, PickUp Objects ✅
+- Pump/Stamina Mechanic after picking up objects ✅
+- Camera Movement ✅
+- First Person View - Player visibility ✅
+- Player Manager ✅
+- Set label to objects that can be picked up and thrown
+- Fix camera clipping thorugh walls (player animations buggy because of cam placement)
 
 Timur:
 - Audio Mixer (Game Music, Effects, Background Noise, etc.), Music/Sound Implementation
@@ -28,6 +30,5 @@ Timur:
 
 
 Open Tasks:
-- Gamemanager
+- Gamemanager 
 - Player Models or Stages (Extra if Time)
-
