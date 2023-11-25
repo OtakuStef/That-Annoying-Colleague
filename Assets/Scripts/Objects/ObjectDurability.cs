@@ -6,11 +6,11 @@ using UnityEngine;
 public class ObjectDurability : MonoBehaviour
 {
     public float maxDurabilty;
-    private float currentDurability;
+    public float currentDurability;
     private GameObject asset;
     public float damageCooldown = 2.0f;
     private float nextPossibleDamage = 0.0f;
-    private bool spawnProtectionActive = true;
+    public bool spawnProtectionActive = true;
     public int spawnProtectionDuration = 4;
 
 

@@ -2838,6 +2838,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478978880}
   m_CullTransparentMesh: 1
+--- !u!1 &479222699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1255979189008863239, guid: a5f55e567947814408c98abdbd293d29,
+    type: 3}
+  m_PrefabInstance: {fileID: 2069713896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &479222707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479222699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee5fbe7251952194f9b10d084c50b665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 100
+  damageCooldown: 1
 --- !u!1 &482336459
 GameObject:
   m_ObjectHideFlags: 0
@@ -4998,6 +5018,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1143699278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &903819352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6715177735482791545, guid: a5f55e567947814408c98abdbd293d29,
+    type: 3}
+  m_PrefabInstance: {fileID: 2069713896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &903819356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903819352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &918517534
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,6 +5623,7 @@ Transform:
   - {fileID: 2018216132}
   - {fileID: 1809578466}
   - {fileID: 1233800378}
+  - {fileID: 1055162706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &953572418
@@ -6205,6 +6276,53 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1054131034}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1055162705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1055162706}
+  - component: {fileID: 1055162707}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1055162706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055162705}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 943367116}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1055162707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055162705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457772b21b80f4d4eb3236b85b01523d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minPlayerDamageMagnitude: 2
+  playerDamageMultiplicator: 1
+  maxPossiblePlayerDamage: 4
 --- !u!1 &1065796263
 GameObject:
   m_ObjectHideFlags: 0
@@ -12900,10 +13018,18 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1255979189008863239, guid: a5f55e567947814408c98abdbd293d29,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 479222707}
     - targetCorrespondingSourceObject: {fileID: 2723836761529197450, guid: a5f55e567947814408c98abdbd293d29,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1110506091}
+    - targetCorrespondingSourceObject: {fileID: 6715177735482791545, guid: a5f55e567947814408c98abdbd293d29,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 903819356}
   m_SourcePrefab: {fileID: 100100000, guid: a5f55e567947814408c98abdbd293d29, type: 3}
 --- !u!1 &2074141538
 GameObject:
