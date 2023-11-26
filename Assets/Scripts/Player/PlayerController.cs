@@ -35,8 +35,11 @@ namespace UnityTutorial.PlayerControl
         private const float _walkSpeed = 2f;
         private const float _runSpeed = 6f;
         private Vector2 _currentVelocity;
-        
 
+        // adding audio manager to add sound effects for player
+        AudioManager audioManager;
+        private bool isFootstepPlaying = false;
+        private bool wasRunning = false;
 
         private void Start() {
             _hasAnimator = TryGetComponent<Animator>(out _animator);
@@ -51,6 +54,11 @@ namespace UnityTutorial.PlayerControl
             _groundHash = Animator.StringToHash("Grounded");
             _fallingHash = Animator.StringToHash("Falling");
             _crouchHash = Animator.StringToHash("Crouch");
+        }
+
+        private void Awake()
+        {
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         }
 
         private void FixedUpdate() {
@@ -68,7 +76,12 @@ namespace UnityTutorial.PlayerControl
             if(!_hasAnimator) return;
 
             float targetSpeed = _inputManager.Run ? _runSpeed : _walkSpeed;
-            if(_inputManager.Crouch)
+
+            AudioClip stepsSound = _inputManager.Run ? audioManager.steps_running_01 : audioManager.steps_01;
+            bool isRunning = _inputManager.Run;
+            bool isMoving = _inputManager.Move != Vector2.zero;
+
+            if (_inputManager.Crouch)
             {
                 targetSpeed = 1.5f;
                 Debug.Log("Move pressed");
@@ -79,13 +92,30 @@ namespace UnityTutorial.PlayerControl
             if (_grounded)
             {
                 
-            _currentVelocity.x = Mathf.Lerp(_currentVelocity.x, _inputManager.Move.x * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
-            _currentVelocity.y =  Mathf.Lerp(_currentVelocity.y, _inputManager.Move.y * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
+                _currentVelocity.x = Mathf.Lerp(_currentVelocity.x, _inputManager.Move.x * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
+                _currentVelocity.y =  Mathf.Lerp(_currentVelocity.y, _inputManager.Move.y * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
 
-            var xVelDifference = _currentVelocity.x - _playerRigidbody.velocity.x;
-            var zVelDifference = _currentVelocity.y - _playerRigidbody.velocity.z;
+                var xVelDifference = _currentVelocity.x - _playerRigidbody.velocity.x;
+                var zVelDifference = _currentVelocity.y - _playerRigidbody.velocity.z;
 
-            _playerRigidbody.AddForce(transform.TransformVector(new Vector3(xVelDifference, 0 , zVelDifference)), ForceMode.VelocityChange);
+                _playerRigidbody.AddForce(transform.TransformVector(new Vector3(xVelDifference, 0 , zVelDifference)), ForceMode.VelocityChange);
+
+                if (isMoving)
+                {
+                    if (!isFootstepPlaying || wasRunning != isRunning)
+                    {
+                        audioManager.StopSFX();
+                        audioManager.PlaySFX(stepsSound, true);
+                        isFootstepPlaying = true;
+                        wasRunning = isRunning;
+                    }
+                }
+                else if (isFootstepPlaying)
+                {
+                    audioManager.StopSFX();
+                    isFootstepPlaying = false;
+                }
+
             }
             else
             {

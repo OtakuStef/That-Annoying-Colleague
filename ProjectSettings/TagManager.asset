@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ThrowableSpawner
   - Throwable
+  - Audio
   layers:
   - Default
   - TransparentFX
