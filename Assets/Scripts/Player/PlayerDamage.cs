@@ -9,6 +9,7 @@ public class PlayerDamage : MonoBehaviour
     public float playerHealth = 100;
     private float nextPossibleDamage = 0.0f;
     public float damageCooldown = 1.0f;
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +27,18 @@ public class PlayerDamage : MonoBehaviour
     {
         if (PlayerDamagePossible(collision.gameObject))
         {
+
             float minMagnitude = PlayerManager.Instance.minPlayerDamageMagnitude;
             float collisionMagnitude = collision.relativeVelocity.magnitude;
+            Debug.Log("Collision Velocity: " + collision.relativeVelocity);
+            Debug.Log("Collision Magnitude: " + collisionMagnitude);
 
             if (collisionMagnitude > minMagnitude)
             {
                 playerHealth -= calculatePlayerDamage(collision.gameObject, collisionMagnitude);
+                
                 Debug.Log("Player Health reduced to: " + playerHealth);
+                healthBar.SetHealth(playerHealth);
             }
         }
     }
