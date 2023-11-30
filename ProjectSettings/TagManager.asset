@@ -7,6 +7,8 @@ TagManager:
   - ThrowableSpawner
   - Throwable
   - Audio
+  - SpawnArea
+  - PowerUp
   layers:
   - Default
   - TransparentFX
