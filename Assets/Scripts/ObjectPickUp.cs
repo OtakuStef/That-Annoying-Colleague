@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityTutorial.Manager;
 
 public class ObjectPickUp : MonoBehaviour
 {
+
+
     public GameObject player;
     public Transform holdPos;
     public float throwForce = 1f; //force at which the object is thrown at
@@ -17,6 +20,7 @@ public class ObjectPickUp : MonoBehaviour
     private bool eButtonPressed = false;
     private bool PumpForceButtonPressed = false;
     private InputManager _inputManager;
+    public UIManager uiManager;
 
     private int _pickUpHash;
 
@@ -27,13 +31,14 @@ public class ObjectPickUp : MonoBehaviour
     //MouseLookScript mouseLookScript;
     void Start()
     {
+
         LayerNumber = LayerMask.NameToLayer("holdLayer");
 
         _inputManager = GetComponent<InputManager>();
 
         _pickUpHash = Animator.StringToHash("PickUp");
 
-    
+        //uiManager = GetComponent<UIPlayer>();
 
         //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
@@ -58,7 +63,7 @@ public class ObjectPickUp : MonoBehaviour
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
                     //make sure pickup tag is attached
-                    if (hit.transform.gameObject.tag == "canPickUp")
+                    if (hit.transform.gameObject.tag == ObjectManager.Instance.throwableObjectTag)
                     {
                         //pass in object hit into the PickUpObject function
                         PickUpObject(hit.transform.gameObject);
@@ -98,6 +103,8 @@ public class ObjectPickUp : MonoBehaviour
     {
         if (throwForce <= 1000f) throwForce += 100f;
         PumpForceButtonPressed = true;
+        float energyBarValue = throwForce / 10;
+        uiManager.PlayerUI.energyBar.SetEnergy(energyBarValue);
     }
 
     void PickUpObject(GameObject pickUpObj)

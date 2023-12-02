@@ -5,11 +5,11 @@ using TMPro;
 public class UIPlayer : MonoBehaviour
 {
 
-    [SerializeField] HealthBar healthBar;
+    public HealthBar healthBar;
 
-    [SerializeField] EnergyBar energyBar;
-    [SerializeField] PowerUpUI powerUp;
-    [SerializeField] TextMeshProUGUI timerText;
+    public EnergyBar energyBar;
+    public PowerUpUI powerUp;
+    public TextMeshProUGUI timerText;
 
     // Start is called before the first frame update
     void Start()

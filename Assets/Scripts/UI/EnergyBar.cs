@@ -7,15 +7,15 @@ public class EnergyBar : MonoBehaviour
     // Start is called before the first frame update
     public Slider slider;
 
-    public void SetEnergy(int energy){
+    public void SetEnergy(float energy){
         slider.value = energy;
     }
 
-    public void IncreaseEnergy(int energyIncrease){
+    public void IncreaseEnergy(float energyIncrease){
         slider.value = slider.value + energyIncrease;
     }
 
-    public void SetMaxEnergy(int energy){
+    public void SetMaxEnergy(float energy){
         slider.maxValue = energy;
     }
 }
