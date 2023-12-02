@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip background_busy_office;
     public AudioClip steps_01;
     public AudioClip steps_running_01;
+    public AudioClip got_hit_01;
 
     private void Start()
     {

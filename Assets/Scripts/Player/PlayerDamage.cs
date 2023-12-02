@@ -17,6 +17,9 @@ public class PlayerDamage : MonoBehaviour
     private float regeneration = 0.0f;
     private int regenerationCounter = 0;
 
+    // add audio
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +35,17 @@ public class PlayerDamage : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (PlayerDamagePossible(collision.gameObject))
         {
+            // add sound on getting hit
+            AudioClip gotHitSound = audioManager.got_hit_01;
 
             float minMagnitude = PlayerManager.Instance.minPlayerDamageMagnitude;
             float collisionMagnitude = collision.relativeVelocity.magnitude;
@@ -44,6 +54,7 @@ public class PlayerDamage : MonoBehaviour
 
             if (collisionMagnitude > minMagnitude)
             {
+                audioManager.PlaySFX(gotHitSound, false); // play sound on getting hit
                 playerHealth -= calculatePlayerDamage(collision.gameObject, collisionMagnitude);
                 
                 Debug.Log("Player Health reduced to: " + playerHealth);

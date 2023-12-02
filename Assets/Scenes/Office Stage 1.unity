@@ -1577,6 +1577,7 @@ MonoBehaviour:
     type: 3}
   steps_01: {fileID: 8300000, guid: c25ce3108cc58744fb8176ea8d7a9f39, type: 3}
   steps_running_01: {fileID: 8300000, guid: d23e96e2c3184f748bffac743fb7b5fa, type: 3}
+  got_hit_01: {fileID: 0}
 --- !u!1 &193283977
 GameObject:
   m_ObjectHideFlags: 0
