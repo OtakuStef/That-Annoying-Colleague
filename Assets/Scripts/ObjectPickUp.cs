@@ -104,7 +104,12 @@ public class ObjectPickUp : MonoBehaviour
         if (throwForce <= 1000f) throwForce += 100f;
         PumpForceButtonPressed = true;
         float energyBarValue = throwForce / 10;
-        uiManager.PlayerUI.energyBar.SetEnergy(energyBarValue);
+        setEnergyBar(energyBarValue);
+    }
+
+    private void setEnergyBar(float energyValue)
+    {
+        uiManager.PlayerUI.energyBar.SetEnergy(energyValue);
     }
 
     void PickUpObject(GameObject pickUpObj)
@@ -128,6 +133,8 @@ public class ObjectPickUp : MonoBehaviour
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
         heldObj = null; //undefine game object
+        throwForce = 1f;
+        setEnergyBar(throwForce);
     }
     void MoveObject()
     {
@@ -169,6 +176,8 @@ public class ObjectPickUp : MonoBehaviour
         heldObj.transform.parent = null;
         heldObjRb.AddForce(transform.forward * throwForce);
         heldObj = null;
+        throwForce = 1f;
+        setEnergyBar(throwForce);
     }
     void StopClipping() //function only called when dropping/throwing
     {

@@ -4156,7 +4156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e07165097146122b8ffa5c8fafdd24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerUI: {fileID: 0}
+  PlayerUI: {fileID: 1701909177}
 --- !u!1 &482336459
 GameObject:
   m_ObjectHideFlags: 0
@@ -6621,7 +6621,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11676,7 +11676,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11703,6 +11703,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 624572097271013946, guid: a5f55e567947814408c98abdbd293d29,
+        type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 1418954683}
     - target: {fileID: 736857860473873649, guid: a5f55e567947814408c98abdbd293d29,
         type: 3}
       propertyPath: m_Depth
@@ -16338,6 +16343,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 624572097271013946, guid: a5f55e567947814408c98abdbd293d29,
+        type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 479222715}
     - target: {fileID: 736857860473873649, guid: a5f55e567947814408c98abdbd293d29,
         type: 3}
       propertyPath: m_Depth
