@@ -41,6 +41,11 @@ namespace UnityTutorial.PlayerControl
         private bool isFootstepPlaying = false;
         private bool wasRunning = false;
 
+        //adding powerup boost variables
+        private float speedMultiplier = 1f;
+        private float damageMutliplier = 1f;
+        private  bool isShieldActive = false;
+
         private void Start() {
             _hasAnimator = TryGetComponent<Animator>(out _animator);
             _playerRigidbody = GetComponent<Rigidbody>();
@@ -76,6 +81,7 @@ namespace UnityTutorial.PlayerControl
             if(!_hasAnimator) return;
 
             float targetSpeed = _inputManager.Run ? _runSpeed : _walkSpeed;
+            targetSpeed *= speedMultiplier;
 
             AudioClip stepsSound = _inputManager.Run ? audioManager.steps_running_01 : audioManager.steps_01;
             bool isRunning = _inputManager.Run;
@@ -84,6 +90,7 @@ namespace UnityTutorial.PlayerControl
             if (_inputManager.Crouch)
             {
                 targetSpeed = 1.5f;
+                targetSpeed *= speedMultiplier;
                 Debug.Log("Move pressed");
             }
             if (_inputManager.Move == Vector2.zero)  targetSpeed = 0;
@@ -192,6 +199,31 @@ namespace UnityTutorial.PlayerControl
             _animator.SetBool(_groundHash, _grounded);
         }
 
+        //powerup functions
+        public void setSpeedMultiplier(float multiplier)
+        {
+            speedMultiplier = multiplier;
+        }
+
+        public void setDamageMultiplier(float multiplier)
+        {
+            damageMutliplier = multiplier;
+        }
+
+        public float getDamageMultiplier()
+        {
+            return damageMutliplier;
+        }
+
+        public void setShield(bool shieldActive)
+        {
+            isShieldActive = shieldActive;
+        }
+
+        public bool getShieldStatus()
+        {
+            return isShieldActive;
+        }
 
     }
 }

@@ -50,6 +50,11 @@ public class PowerUpUI : MonoBehaviour
         
     }
 
+    public void ResetImage()
+    {
+        SetImage("NONE");
+    }
+
 
     void Start()
     {

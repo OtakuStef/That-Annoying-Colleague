@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityTutorial.PlayerControl;
 
 public class PlayerDamage : MonoBehaviour
 {
     public float playerHealth = 100;
+    public float maxHealth = 100;
     private float nextPossibleDamage = 0.0f;
     public float damageCooldown = 1.0f;
     public HealthBar healthBar;
+    private bool isHealing = false;
+    private float regenerationDuration = 0.0f;
+    private float regeneration = 0.0f;
+    private int regenerationCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +26,10 @@ public class PlayerDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isHealing)
+        {
+            heal();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -47,6 +56,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if (collisionObject.tag == ObjectManager.Instance.throwableObjectTag && 
             collisionObject.GetComponent<ObjectDurability>().spawnProtectionActive &&
+            this.gameObject.GetComponent<PlayerController>().getShieldStatus() &&
             Time.time > nextPossibleDamage) 
         {
             nextPossibleDamage = Time.time + damageCooldown;
@@ -64,5 +74,29 @@ public class PlayerDamage : MonoBehaviour
 
         float calculatedDamage = durabilityDamage * collisionMagnitude * damageMultiplicator;
         return Mathf.Clamp(calculatedDamage, 0.0f, maxPossibleDamage);
+    }
+
+    public void regenerateHealth(float regeneration, float regernerationDuration)
+    {
+        this.regeneration = regeneration;
+        this.regenerationDuration = regernerationDuration;
+        this.isHealing = true;
+    }
+
+    private IEnumerator heal()
+    {
+        if(this.regenerationCounter < this.regenerationDuration)
+        {
+            playerHealth = Mathf.Clamp(playerHealth + this.regeneration, 0.0f, maxHealth);
+            healthBar.SetHealth(playerHealth);
+            this.regenerationCounter += 1;
+            yield return new WaitForSeconds(1);
+        }
+        else
+        {
+            this.isHealing=false;
+            yield return null;
+        }
+       
     }
 }

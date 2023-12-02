@@ -19,7 +19,6 @@ public class PowerupSpawner : MonoBehaviour
     void Update()
     {
         Vector3 spawnPoint = getRandomSpawnPoint();
-        Debug.Log(spawnPoint);
     }
 
     private void findPlaneCoordinates()
