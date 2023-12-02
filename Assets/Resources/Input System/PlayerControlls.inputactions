@@ -393,7 +393,7 @@
                 {
                     "name": "",
                     "id": "7e92d16a-e536-4dac-b537-22749d837a31",
-                    "path": "<XInputController>/leftShoulder",
+                    "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
