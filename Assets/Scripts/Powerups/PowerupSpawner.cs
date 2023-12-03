@@ -80,8 +80,6 @@ public class PowerupSpawner : MonoBehaviour
         planeCorners.Add(transform.TransformPoint(planeVerticeList[110]));
         planeCorners.Add(transform.TransformPoint(planeVerticeList[120]));
 
-        //Hardcoded since it wont work correctly
-
     }
 
     void CalculateEdgeVectors(int VectorCorner)
@@ -94,14 +92,14 @@ public class PowerupSpawner : MonoBehaviour
 
     public Vector3 getRandomSpawnPoint()
     {
-        int randomCornerIdx = Random.Range(0, 2) == 0 ? 0 : 2; //there is two triangles in a plane, which tirangle contains the random point is chosen
-                                                               //corner point is chosen for triangles as the variable
-        CalculateEdgeVectors(randomCornerIdx); //in case of transform changes edge vectors change too
+        int randomCornerIdx = Random.Range(0, 2) == 0 ? 0 : 2; 
+
+        CalculateEdgeVectors(randomCornerIdx); 
 
         float u = Random.Range(0.0f, 1.0f);
         float v = Random.Range(0.0f, 1.0f);
 
-        if (v + u > 1) //sum of coordinates should be smaller than 1 for the point be inside the triangle
+        if (v + u > 1) 
         {
             v = 1 - v;
             u = 1 - u;
