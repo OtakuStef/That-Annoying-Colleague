@@ -3,11 +3,11 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
     public static RoundManager Instance { get; private set; }
-    public Player player1;
-    public Player player2;
+    public PlayerDamage player1;
+    public PlayerDamage player2;
 
     public int RoundCount { get; private set; } = 0;
-    public Player WinnerOfLastRound { get; private set; }
+    public PlayerDamage WinnerOfLastRound { get; private set; }
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class RoundManager : MonoBehaviour
     {
         
         RoundCount++;
+        Debug.Log("Round Started, round: " + RoundCount.ToString());
         // round reset
         // ResetPlayerPositions(); ???
         // ResetPlayerHealth(); ???
@@ -36,28 +37,31 @@ public class RoundManager : MonoBehaviour
         // check
         if (player1 != null && player2 != null)
         {
-            if (player1.Health > player2.Health)
+            Debug.Log("Round finished.");
+            if (player1.playerHealth > player2.playerHealth)
             {
                 WinnerOfLastRound = player1;
-                player1.IncrementConsecutiveWins();
-                player2.ResetConsecutiveWins();
-                CheckForAchievement(player1);
+                //player1.IncrementConsecutiveWins();
+                //player2.ResetConsecutiveWins();
+                //CheckForAchievement(player1);
                 CheckForSurvivor(player1);
+                Debug.Log("Winner if Player 1.");
             }
-            else if (player2.Health > player1.Health)
+            else if (player2.playerHealth > player1.playerHealth)
             {
                 WinnerOfLastRound = player2;
-                player2.IncrementConsecutiveWins();
-                player1.ResetConsecutiveWins();
-                CheckForAchievement(player2);
+                //player2.IncrementConsecutiveWins();
+                //player1.ResetConsecutiveWins();
+                //CheckForAchievement(player2);
                 CheckForSurvivor(player2);
+                Debug.Log("Winner if Player 2.");
             }
             else
             {
                 // tie
                 WinnerOfLastRound = null;
-                player1.ResetConsecutiveWins();
-                player2.ResetConsecutiveWins();
+                //player1.ResetConsecutiveWins();
+                //player2.ResetConsecutiveWins();
             }
 
             // ui?
@@ -68,6 +72,7 @@ public class RoundManager : MonoBehaviour
         }
     }
 
+    /*
     private void CheckForAchievement(Player player)
     {
         if (player.consecutiveWins == 5)
@@ -75,11 +80,11 @@ public class RoundManager : MonoBehaviour
             AchievementsManager.Instance.AwardAchievement(player, "Office Warrior");
         }
     }
-
-    private void CheckForSurvivor(Player player)
+    */
+    private void CheckForSurvivor(PlayerDamage player)
     {
-        float tenPercentHealth = player.Health * 0.1f;
-        if (player.Health <= tenPercentHealth)
+        float tenPercentHealth = player.playerHealth * 0.1f;
+        if (player.playerHealth <= tenPercentHealth)
         {
             AchievementsManager.Instance.AwardAchievement(player, "Survivor");
         }

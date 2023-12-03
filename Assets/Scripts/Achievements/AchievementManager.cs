@@ -48,12 +48,12 @@ public class AchievementsManager : MonoBehaviour
         return false;
     }
 
-    public void AwardAchievement(Player player, string achievementName)
+    public void AwardAchievement(PlayerDamage player, string achievementName)
     {
         if (!IsAchievementUnlocked(achievementName))
         {
             achievementsUnlocked[achievementName] = true;
-            player.AddAchievement(achievementName);
+            // player.AddAchievement(achievementName);
             Debug.Log($"Achievement Unlocked: {achievementName}");
             // ui?
         }

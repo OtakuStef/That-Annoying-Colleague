@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
+    public RoundManager roundManager;
     public TextMeshProUGUI timerText;
     private TimeSpan timeRemaining;
     private bool timerIsRunning = false;
@@ -24,6 +25,11 @@ public class CountdownTimer : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        roundManager = GameObject.FindGameObjectWithTag("GameRound").GetComponent<RoundManager>();
+    }
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -38,6 +44,7 @@ public class CountdownTimer : MonoBehaviour
     {
         if (scene.name == "Office Stage 1")
         {
+            roundManager.StartNewRound();
             StartCountdown();
         }
     }

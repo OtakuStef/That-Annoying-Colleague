@@ -11046,7 +11046,7 @@ GameObject:
   - component: {fileID: 1233800379}
   m_Layer: 0
   m_Name: RoundManager
-  m_TagString: Untagged
+  m_TagString: GameRound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11078,8 +11078,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d55f492c79439498e3303cab6c0a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
+  player1: {fileID: 479222707}
+  player2: {fileID: 1418954684}
 --- !u!1 &1259572911
 GameObject:
   m_ObjectHideFlags: 0
@@ -16909,7 +16909,6 @@ GameObject:
   - component: {fileID: 1832173403}
   - component: {fileID: 1832173402}
   - component: {fileID: 1832173401}
-  - component: {fileID: 1832173400}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -16917,20 +16916,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1832173400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832173399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 130311f3f8ba4c558b857bba89904024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 768755875}
-  Timeleft: 61
 --- !u!114 &1832173401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17579,6 +17564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c5514e45f8b5c40a6cddcc996cee6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundManager: {fileID: 0}
   timerText: {fileID: 768755875}
 --- !u!1001 &1901651724
 PrefabInstance:

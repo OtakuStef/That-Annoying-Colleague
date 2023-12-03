@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     }
 
     // part of the method that processes a hit on a player
-
+    /* 
     public void OnObjectHitPlayer(Player attackedPlayer, Player attackingPlayer, GameObject hitObject)
     {
 
@@ -66,4 +66,5 @@ public class Player : MonoBehaviour
             AchievementsManager.Instance.AwardAchievement(attackingPlayer, "First Blood");
         }
     }
+    */
 }
