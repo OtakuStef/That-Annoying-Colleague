@@ -78,7 +78,7 @@ public class ObjectDurability : MonoBehaviour
 
     private float calculatePlayerDamage()
     {
-        return maxDurabilty*0.5f; //Player-Collision should always reduce durability about half of max durability
+        return maxDurabilty*0.35f; //Player-Collision should always reduce durability about half of max durability
     }
 
     private IEnumerator objectDestruction()
