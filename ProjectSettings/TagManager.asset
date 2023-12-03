@@ -9,6 +9,8 @@ TagManager:
   - Audio
   - SpawnArea
   - PowerUp
+  - ThrowableContainer
+  - PowerupContainer
   layers:
   - Default
   - TransparentFX

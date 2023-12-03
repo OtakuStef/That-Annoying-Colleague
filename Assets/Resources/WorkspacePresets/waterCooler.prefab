@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8078847164187651087}
   - component: {fileID: 7629469231887041411}
   - component: {fileID: 7007803891971920753}
-  - component: {fileID: 2817720501138204902}
   m_Layer: 0
   m_Name: waterCooler
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2817720501138204902
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093179553865936630}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.32, y: 0.8000001, z: 0.35999998}
-  m_Center: {x: 0, y: 0.40000004, z: 0.019999996}
 --- !u!1 &4471351159205512075
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +94,7 @@ GameObject:
   - component: {fileID: 1115514922252523661}
   - component: {fileID: -6876565325044533886}
   - component: {fileID: -470200778436452784}
+  - component: {fileID: 7608258620872755089}
   m_Layer: 0
   m_Name: waterCooler
   m_TagString: Throwable
@@ -179,3 +158,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDurabilty: 3
+  currentDurability: 0
+  damageCooldown: 2
+  spawnProtectionActive: 1
+  spawnProtectionDuration: 4
+--- !u!65 &7608258620872755089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471351159205512075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.32, y: 1.1539812, z: 0.31727624}
+  m_Center: {x: 6.3222e-14, y: 0.5769906, z: -0.001361832}

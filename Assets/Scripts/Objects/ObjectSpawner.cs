@@ -7,11 +7,13 @@ public class ObjectSpawner : MonoBehaviour
     private GameObject[] objectsToSpawn;
     public float spawnDelay = 10.0f;
     private float spawnCounter = 0.0f;
+    private GameObject throwableContainer;
 
     // Start is called before the first frame update
     void Start()
     {
         objectsToSpawn = Resources.LoadAll<GameObject>("WorkspacePresets");
+        throwableContainer = GameObject.FindGameObjectWithTag("ThrowableContainer");
     }
 
     // Update is called once per frame
@@ -40,7 +42,7 @@ public class ObjectSpawner : MonoBehaviour
         GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag("ThrowableSpawner");
         
         var spawn = GetRandomGameObject(spawnpoints);
-        var newObject = GameObject.Instantiate(GetRandomGameObject(objectsToSpawn));
+        var newObject = Instantiate(GetRandomGameObject(objectsToSpawn), throwableContainer.transform);
 
         newObject.transform.position = spawn.transform.position;
 

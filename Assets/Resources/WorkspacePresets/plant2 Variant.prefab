@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5442488152263584761}
   - component: {fileID: 5442488152260684761}
   - component: {fileID: 5442488152261683481}
-  - component: {fileID: 3771032639831649767}
   m_Layer: 0
   m_Name: Box032
   m_TagString: Untagged
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3771032639831649767
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5442488152263948249}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.44299895, y: 0.44299906, z: 0.57875675}
-  m_Center: {x: 0, y: 0.0000038146973, z: 0.28937846}
 --- !u!1 &5442488152263948251
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +178,7 @@ GameObject:
   - component: {fileID: 5442488152263584767}
   - component: {fileID: 8468605813537351654}
   - component: {fileID: 8487979477278259475}
+  - component: {fileID: 2907509690078321423}
   m_Layer: 0
   m_Name: plant2 Variant
   m_TagString: Throwable
@@ -215,15 +194,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5442488152263948255}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.20825465, z: -0, w: 0.97807467}
-  m_LocalPosition: {x: 2.57, y: 1.328, z: 9.532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5442488152263584763}
   - {fileID: 5442488152263584761}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -24.04, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8468605813537351654
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,3 +243,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDurabilty: 3
+  currentDurability: 0
+  damageCooldown: 2
+  spawnProtectionActive: 1
+  spawnProtectionDuration: 4
+--- !u!65 &2907509690078321423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5442488152263948255}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.39062005, y: 0.5676516, z: 0.3772682}
+  m_Center: {x: -0.08831583, y: -0.09212311, z: 4.8161407}

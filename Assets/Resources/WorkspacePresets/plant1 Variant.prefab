@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1080785891471787529}
   - component: {fileID: 1080785891470493225}
   - component: {fileID: 1080785891469493481}
-  - component: {fileID: 2268481593284423613}
   m_Layer: 0
   m_Name: Box038
   m_TagString: Untagged
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2268481593284423613
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080785891471497769}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.44299895, y: 0.442999, z: 0.5787567}
-  m_Center: {x: 0, y: 0.0000019073486, z: 0.28937823}
 --- !u!1 &1080785891471497771
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +178,7 @@ GameObject:
   - component: {fileID: 1080785891471787535}
   - component: {fileID: 6423523535926508231}
   - component: {fileID: -6479910824081431744}
+  - component: {fileID: 8448220937875391677}
   m_Layer: 0
   m_Name: plant1 Variant
   m_TagString: Throwable
@@ -216,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 1080785891471497775}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.251, y: 1.274, z: 6.609}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -264,3 +243,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDurabilty: 3
+  currentDurability: 0
+  damageCooldown: 2
+  spawnProtectionActive: 1
+  spawnProtectionDuration: 4
+--- !u!65 &8448220937875391677
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080785891471497775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.46924874, y: 0.5867666, z: 0.47547752}
+  m_Center: {x: -0.026109474, y: -0.08661679, z: 6.429926}
