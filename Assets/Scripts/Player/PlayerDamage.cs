@@ -30,7 +30,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if (isHealing)
         {
-            heal();
+            StartCoroutine(heal());
         }
     }
 
@@ -48,7 +48,6 @@ public class PlayerDamage : MonoBehaviour
 
             float minMagnitude = PlayerManager.Instance.minPlayerDamageMagnitude;
             float collisionMagnitude = collision.relativeVelocity.magnitude;
-            Debug.Log("Collision Velocity: " + collision.relativeVelocity);
             Debug.Log("Collision Magnitude: " + collisionMagnitude);
 
             if (collisionMagnitude > minMagnitude)
@@ -64,15 +63,21 @@ public class PlayerDamage : MonoBehaviour
 
     private bool PlayerDamagePossible(GameObject collisionObject)
     {
-        if (collisionObject.tag == ObjectManager.Instance.throwableObjectTag && 
-            collisionObject.GetComponent<ObjectDurability>().spawnProtectionActive &&
-            this.gameObject.GetComponent<PlayerController>().getShieldStatus() &&
-            Time.time > nextPossibleDamage) 
+        try
         {
-            nextPossibleDamage = Time.time + damageCooldown;
-            return true; 
+            if (collisionObject.tag == ObjectManager.Instance.throwableObjectTag &&
+                !collisionObject.GetComponent<ObjectDurability>().spawnProtectionActive &&
+                !this.gameObject.GetComponent<PlayerController>().getShieldStatus() &&
+                Time.time > nextPossibleDamage)
+            {
+                nextPossibleDamage = Time.time + damageCooldown;
+                return true;
+            }
         }
-
+        catch
+        {
+            return false;
+        }
         return false;
     }
 
@@ -111,8 +116,10 @@ public class PlayerDamage : MonoBehaviour
 
     private IEnumerator heal()
     {
+        Debug.Log("Healing true for: " + regenerationCounter + " / " + regenerationDuration);
         if(this.regenerationCounter < this.regenerationDuration)
         {
+            Debug.Log("Healing. Current HP: " + playerHealth);
             playerHealth = Mathf.Clamp(playerHealth + this.regeneration, 0.0f, maxHealth);
             this.gameObject.GetComponent<UIManager>().PlayerUI.healthBar.SetHealth(playerHealth);
             this.regenerationCounter += 1;

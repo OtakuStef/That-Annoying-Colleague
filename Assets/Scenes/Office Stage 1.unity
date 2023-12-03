@@ -1577,7 +1577,7 @@ MonoBehaviour:
     type: 3}
   steps_01: {fileID: 8300000, guid: c25ce3108cc58744fb8176ea8d7a9f39, type: 3}
   steps_running_01: {fileID: 8300000, guid: d23e96e2c3184f748bffac743fb7b5fa, type: 3}
-  got_hit_01: {fileID: 0}
+  got_hit_01: {fileID: 8300000, guid: ecdf5ba8926e7124388797bd4ec21b7a, type: 3}
 --- !u!1 &193283977
 GameObject:
   m_ObjectHideFlags: 0
@@ -6743,7 +6743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0ff7ad3e65cb548bb547dfe453b3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meanSpawnDelay: 10
+  meanSpawnDelay: 20
   spawnDelayVariance: 0.2
   yAxisPosition: -1
   point1: {x: 0, y: 0, z: 0}
@@ -15667,7 +15667,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1968788954}
   - component: {fileID: 1968788955}
-  - component: {fileID: 1968788956}
   m_Layer: 0
   m_Name: PowerupManager
   m_TagString: Untagged
@@ -15710,22 +15709,6 @@ MonoBehaviour:
   damageMultiplier: 2
   damageDuration: 10
   powerUpAudio: {fileID: 109193315}
---- !u!114 &1968788956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968788953}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0ff7ad3e65cb548bb547dfe453b3d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meanSpawnDelay: 10
-  spawnDelayVariance: 0.2
-  yAxisPosition: -1
-  point1: {x: 0, y: 0, z: 0}
 --- !u!1001 &1976943230
 PrefabInstance:
   m_ObjectHideFlags: 0
