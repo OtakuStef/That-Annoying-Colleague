@@ -15,12 +15,14 @@ public class PowerupSpawner : MonoBehaviour
     private GameObject[] powerUps;
     public float yAxisPosition = -1.0f;
     public Vector3 point1 = new Vector3();
+    private GameObject powerupContainer;
 
     // Start is called before the first frame update
     void Start()
     {
         findPlaneCoordinates();
         powerUps = Resources.LoadAll<GameObject>("Powerups");
+        powerupContainer = GameObject.FindGameObjectWithTag("PowerupContainer");
 
     }
 
@@ -41,7 +43,7 @@ public class PowerupSpawner : MonoBehaviour
     {
         Vector3 spawnPoint = restrictSpawnCoordinates(getRandomSpawnPoint());
         GameObject powerUpToSpawn = GetRandomGameObject(powerUps);
-        Instantiate(powerUpToSpawn, spawnPoint, Quaternion.identity);
+        Instantiate(powerUpToSpawn, spawnPoint, Quaternion.identity, powerupContainer.transform);
 
         yield return null;
     }
