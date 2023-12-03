@@ -45,7 +45,7 @@ public class RoundManager : MonoBehaviour
                 //player2.ResetConsecutiveWins();
                 //CheckForAchievement(player1);
                 CheckForSurvivor(player1);
-                Debug.Log("Winner if Player 1.");
+                Debug.Log("Winner is Player 1.");
             }
             else if (player2.playerHealth > player1.playerHealth)
             {
@@ -54,7 +54,7 @@ public class RoundManager : MonoBehaviour
                 //player1.ResetConsecutiveWins();
                 //CheckForAchievement(player2);
                 CheckForSurvivor(player2);
-                Debug.Log("Winner if Player 2.");
+                Debug.Log("Winner is Player 2.");
             }
             else
             {
@@ -70,6 +70,18 @@ public class RoundManager : MonoBehaviour
         {
             Debug.LogError("Player references not set in RoundManager.");
         }
+    }
+
+    public bool healthBelowZero()
+    {
+        if (player1 != null && player2 != null)
+        {
+            if (player1.playerHealth <= 0 || player2.playerHealth <= 0)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*

@@ -8,11 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public RoundManager roundManager;
+    //public RoundManager roundManager;
     public TextMeshProUGUI timerText;
     private TimeSpan timeRemaining;
     private bool timerIsRunning = false;
-    private float startTime = 90;
+    private float startTime = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +24,12 @@ public class CountdownTimer : MonoBehaviour
         */
 
     }
-
+    /*
     private void Awake()
     {
         roundManager = GameObject.FindGameObjectWithTag("GameRound").GetComponent<RoundManager>();
     }
+    */
 
     private void OnEnable()
     {
@@ -44,7 +45,8 @@ public class CountdownTimer : MonoBehaviour
     {
         if (scene.name == "Office Stage 1")
         {
-            roundManager.StartNewRound();
+            //roundManager.StartNewRound();
+            RoundManager.Instance.StartNewRound();
             StartCountdown();
         }
     }
@@ -68,11 +70,18 @@ public class CountdownTimer : MonoBehaviour
             {
                 // subtract the time since last Update call
                 timeRemaining -= TimeSpan.FromSeconds(Time.deltaTime);
+                if (RoundManager.Instance.healthBelowZero() /* roundManager.healthBelowZero() */)
+                {
+                    //roundManager.EndRound();
+                    RoundManager.Instance.EndRound();
+                    timeRemaining = TimeSpan.Zero;
+                    timerIsRunning = false;
+                }
                 UpdateTimerText();
+                
             }
             else
             {
-                // TODO: add game stop when timer is finished
                 timeRemaining = TimeSpan.Zero;
                 timerIsRunning = false;
                 UpdateTimerText();
