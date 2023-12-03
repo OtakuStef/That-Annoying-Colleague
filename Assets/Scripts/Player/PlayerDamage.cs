@@ -15,6 +15,8 @@ public class PlayerDamage : MonoBehaviour
     private float regenerationDuration = 0.0f;
     private float regeneration = 0.0f;
     private int regenerationCounter = 0;
+    private float regenerationSteps = 2.0f;
+    private float regenerationCheckCounter = 0.0f;
 
     // add audio
     AudioManager audioManager;
@@ -28,8 +30,10 @@ public class PlayerDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isHealing)
+        regenerationCheckCounter += Time.deltaTime;
+        if (isHealing && regenerationCheckCounter > regenerationSteps)
         {
+            regenerationCheckCounter = 0;
             StartCoroutine(heal());
         }
     }
