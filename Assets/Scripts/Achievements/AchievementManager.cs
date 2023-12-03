@@ -34,7 +34,7 @@ public class AchievementsManager : MonoBehaviour
         }
 
         achievementsUnlocked["First Blood"] = false;
-        achievementsUnlocked["Office Warrior"] = false;
+        //achievementsUnlocked["Office Warrior"] = false;
         achievementsUnlocked["Survivor"] = false;
     }
 

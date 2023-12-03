@@ -1,10 +1,20 @@
+using TMPro;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
     public static RoundManager Instance { get; private set; }
     public PlayerDamage player1;
     public PlayerDamage player2;
+
+    public TextMeshProUGUI winner;
+
+    [SerializeField] GameObject GameOverUI;
+    bool paused = false;
 
     public int RoundCount { get; private set; } = 0;
     public PlayerDamage WinnerOfLastRound { get; private set; }
@@ -26,45 +36,37 @@ public class RoundManager : MonoBehaviour
     {
         
         RoundCount++;
-        Debug.Log("Round Started, round: " + RoundCount.ToString());
-        // round reset
-        // ResetPlayerPositions(); ???
-        // ResetPlayerHealth(); ???
+        //Debug.Log("Round Started, round: " + RoundCount.ToString());
     }
 
     public void EndRound()
     {
-        // check
+        Time.timeScale = 0f;
+        paused = true;
+        GameOverUI.SetActive(true);
+        AudioManager.Instance.StopSFX();
         if (player1 != null && player2 != null)
         {
-            Debug.Log("Round finished.");
+            //Debug.Log("Round finished.");
             if (player1.playerHealth > player2.playerHealth)
             {
                 WinnerOfLastRound = player1;
-                //player1.IncrementConsecutiveWins();
-                //player2.ResetConsecutiveWins();
-                //CheckForAchievement(player1);
+                winner.text = "Winner is Player 1";
                 CheckForSurvivor(player1);
-                Debug.Log("Winner is Player 1.");
+                //Debug.Log("Winner is Player 1.");
             }
             else if (player2.playerHealth > player1.playerHealth)
             {
                 WinnerOfLastRound = player2;
-                //player2.IncrementConsecutiveWins();
-                //player1.ResetConsecutiveWins();
-                //CheckForAchievement(player2);
+                winner.text = "Winner is Player 2";
                 CheckForSurvivor(player2);
-                Debug.Log("Winner is Player 2.");
+                //Debug.Log("Winner is Player 2.");
             }
             else
             {
                 // tie
                 WinnerOfLastRound = null;
-                //player1.ResetConsecutiveWins();
-                //player2.ResetConsecutiveWins();
             }
-
-            // ui?
         }
         else
         {
@@ -84,15 +86,6 @@ public class RoundManager : MonoBehaviour
         return false;
     }
 
-    /*
-    private void CheckForAchievement(Player player)
-    {
-        if (player.consecutiveWins == 5)
-        {
-            AchievementsManager.Instance.AwardAchievement(player, "Office Warrior");
-        }
-    }
-    */
     private void CheckForSurvivor(PlayerDamage player)
     {
         float tenPercentHealth = player.playerHealth * 0.1f;
@@ -100,6 +93,33 @@ public class RoundManager : MonoBehaviour
         {
             AchievementsManager.Instance.AwardAchievement(player, "Survivor");
         }
+    }
+
+    public void Home()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Office Stage 1");
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown("m") && (paused == true))
+        {
+            Home();
+        }
+        if (Input.GetKeyDown("n") && (paused == true))
+        {
+            Restart();
+        }
+
+
     }
 
 }

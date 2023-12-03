@@ -12,7 +12,7 @@ public class CountdownTimer : MonoBehaviour
     public TextMeshProUGUI timerText;
     private TimeSpan timeRemaining;
     private bool timerIsRunning = false;
-    private float startTime = 15;
+    private float startTime = 90;
 
     // Start is called before the first frame update
     void Start()
