@@ -6,10 +6,8 @@ using UnityTutorial.PlayerControl;
 public class DamagePowerup : MonoBehaviour
 {
     private bool isTriggered = false;
-    public AudioSource pickupSound;
     private float damageTimeout = 1.0f;
     private float damageMultiplier = 1.0f;
-    public PowerUpUI powerUp;
 
     private void Start()
     {
@@ -22,19 +20,37 @@ public class DamagePowerup : MonoBehaviour
         if (player.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true;
-            pickupSound.Play();
+            PowerupManager.Instance.powerUpAudio.Play();
             StartCoroutine(damageUp(player));
-            //Remove Powerup
+            this.transform.parent.gameObject.transform.position = new Vector3(0, -100, 0);
+
         }
     }
 
     private IEnumerator damageUp(Collider player)
     {
-        powerUp.SetImage("DMG");
-        player.GetComponent<PlayerController>().setDamageMultiplier(damageMultiplier);
+        player.GetComponent<UIManager>().PlayerUI.powerUp.SetImage("DMG");
+        if (player.name == "Player1")
+        {
+            PowerupManager.Instance.setPlayer1DamageBooster(damageMultiplier);
+        }
+        else if(player.name == "Player2")
+        {
+            PowerupManager.Instance.setPlayer2DamageBooster(damageMultiplier);
+        }
+
         yield return new WaitForSeconds(damageTimeout);
-        player.GetComponent<PlayerController>().setDamageMultiplier(1.0f);
-        powerUp.ResetImage();
+
+        if (player.name == "Player1")
+        {
+            PowerupManager.Instance.setPlayer1DamageBooster(1.0f);
+        }
+        else if(player.name == "Player2")
+        {
+            PowerupManager.Instance.setPlayer2DamageBooster(1.0f);
+        }
+        player.GetComponent<UIManager>().PlayerUI.powerUp.ResetImage();
+        Destroy(this.transform.parent.gameObject);
     }
 
 }

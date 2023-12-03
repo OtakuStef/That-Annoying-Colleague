@@ -6,9 +6,7 @@ using UnityTutorial.PlayerControl;
 public class ShieldPowerup : MonoBehaviour
 {
     private bool isTriggered = false;
-    public AudioSource pickupSound;
     private float shieldDuration = 1.0f;
-    public PowerUpUI powerUp;
 
     private void Start()
     {
@@ -20,19 +18,20 @@ public class ShieldPowerup : MonoBehaviour
         if (player.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true;
-            pickupSound.Play();
+            PowerupManager.Instance.powerUpAudio.Play();
             StartCoroutine(setShield(player));
-            //Remove Powerup
+            this.transform.parent.gameObject.transform.position = new Vector3(0, -100, 0);
         }
     }
 
     private IEnumerator setShield(Collider player)
     {
-        powerUp.SetImage("SHIELD");
+        player.GetComponent<UIManager>().PlayerUI.powerUp.SetImage("SHIELD");
         player.GetComponent<PlayerController>().setShield(true);
         yield return new WaitForSeconds(shieldDuration);
         player.GetComponent<PlayerController>().setShield(false);
-        powerUp.ResetImage();
+        player.GetComponent<UIManager>().PlayerUI.powerUp.ResetImage();
+        Destroy(this.transform.parent.gameObject);
     }
 
 }

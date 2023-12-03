@@ -7,24 +7,64 @@ public class PowerupSpawner : MonoBehaviour
 {
     private List<Vector3> planeCorners = new List<Vector3>();
     private List<Vector3> edgeVectors = new List<Vector3>();
+    private List<Vector3> planeVerticeList = new List<Vector3>();
+    public float meanSpawnDelay = 10.0f;
+    private float spawnDelay = 10.0f;
+    private float spawnCounter = 0.0f;
+    public float spawnDelayVariance = 0.2f;
+    private GameObject[] powerUps;
+    public float yAxisPosition = -1.0f;
+    public Vector3 point1 = new Vector3();
 
     // Start is called before the first frame update
     void Start()
     {
         findPlaneCoordinates();
+        powerUps = Resources.LoadAll<GameObject>("Powerups");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 spawnPoint = getRandomSpawnPoint();
+        spawnCounter += Time.deltaTime;
+        if (spawnCounter >= spawnDelay)
+        {
+            setRandomSpawnDelay();
+            spawnCounter = 0.0f;
+
+            StartCoroutine(spawnRoutine());
+        }
+    }
+
+    private IEnumerator spawnRoutine()
+    {
+        Vector3 spawnPoint = restrictSpawnCoordinates(getRandomSpawnPoint());
+        GameObject powerUpToSpawn = GetRandomGameObject(powerUps);
+        Instantiate(powerUpToSpawn, spawnPoint, Quaternion.identity);
+
+        yield return null;
+    }
+
+    private GameObject GetRandomGameObject(GameObject[] objects)
+    {
+        if (objects != null)
+        {
+            int randomNumber = Random.Range(0, objects.Length);
+            return objects[randomNumber];
+        }
+        return null;
+    }
+
+    private void setRandomSpawnDelay()
+    {
+        float clampedSpawnDelayVariance = Mathf.Clamp01(spawnDelayVariance);
+        spawnDelay = Random.Range(meanSpawnDelay * (1- clampedSpawnDelayVariance), meanSpawnDelay * (1+ clampedSpawnDelayVariance));
     }
 
     private void findPlaneCoordinates()
     {
-        GameObject spawnArea = GameObject.FindGameObjectWithTag("SpawnArea");
-        List<Vector3> planeVerticeList = new List<Vector3>(spawnArea.GetComponent<MeshFilter>().sharedMesh.vertices);
+        planeVerticeList = new List<Vector3>(GetComponent<MeshFilter>().sharedMesh.vertices);
 
         CalculateCornerPoints(planeVerticeList);
     }
@@ -37,6 +77,9 @@ public class PowerupSpawner : MonoBehaviour
         planeCorners.Add(transform.TransformPoint(planeVerticeList[10]));
         planeCorners.Add(transform.TransformPoint(planeVerticeList[110]));
         planeCorners.Add(transform.TransformPoint(planeVerticeList[120]));
+
+        //Hardcoded since it wont work correctly
+
     }
 
     void CalculateEdgeVectors(int VectorCorner)
@@ -62,6 +105,15 @@ public class PowerupSpawner : MonoBehaviour
             u = 1 - u;
         }
 
-       return planeCorners[randomCornerIdx] + u * edgeVectors[0] + v * edgeVectors[1];
+        return planeCorners[randomCornerIdx] + u * edgeVectors[0] + v * edgeVectors[1];
     }
+
+    public Vector3 restrictSpawnCoordinates(Vector3 spawnPoint)
+    {
+        float xAxis = Mathf.Clamp(spawnPoint.x, 22.1f, 35.5f);
+        float zAxis = Mathf.Clamp(spawnPoint.z, -17.5f, -4.0f);
+
+        return new Vector3(xAxis, this.yAxisPosition, zAxis);
+    }
+
 }

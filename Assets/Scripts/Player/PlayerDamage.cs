@@ -11,7 +11,6 @@ public class PlayerDamage : MonoBehaviour
     public float maxHealth = 100;
     private float nextPossibleDamage = 0.0f;
     public float damageCooldown = 1.0f;
-    public HealthBar healthBar;
     private bool isHealing = false;
     private float regenerationDuration = 0.0f;
     private float regeneration = 0.0f;
@@ -23,7 +22,7 @@ public class PlayerDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.gameObject.GetComponent<UIManager>().PlayerUI.healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -58,7 +57,7 @@ public class PlayerDamage : MonoBehaviour
                 playerHealth -= calculatePlayerDamage(collision.gameObject, collisionMagnitude);
                 
                 Debug.Log("Player Health reduced to: " + playerHealth);
-                healthBar.SetHealth(playerHealth);
+                this.gameObject.GetComponent<UIManager>().PlayerUI.healthBar.SetHealth(playerHealth);
             }
         }
     }
@@ -77,14 +76,30 @@ public class PlayerDamage : MonoBehaviour
         return false;
     }
 
+
     private float calculatePlayerDamage(GameObject collisionObject, float collisionMagnitude)
     {
         float damageMultiplicator = PlayerManager.Instance.playerDamageMultiplicator;
         float maxPossibleDamage = PlayerManager.Instance.maxPossiblePlayerDamage;
+        float damageBooster = getDamageBooster();
         float durabilityDamage = collisionObject.GetComponent<ObjectDurability>().currentDurability;
 
-        float calculatedDamage = durabilityDamage * collisionMagnitude * damageMultiplicator;
+        float calculatedDamage = durabilityDamage * collisionMagnitude * damageMultiplicator * damageBooster;
         return Mathf.Clamp(calculatedDamage, 0.0f, maxPossibleDamage);
+    }
+
+    private float getDamageBooster()
+    {
+        float booster = 1.0f;
+        if (this.gameObject.name == "Player1")
+        {
+            booster = PowerupManager.Instance.getPlayer2DamageBooster();
+        }
+        else if (this.gameObject.name == "Player2")
+        {
+            booster = PowerupManager.Instance.getPlayer1DamageBooster();
+        }
+        return booster;
     }
 
     public void regenerateHealth(float regeneration, float regernerationDuration)
@@ -99,7 +114,7 @@ public class PlayerDamage : MonoBehaviour
         if(this.regenerationCounter < this.regenerationDuration)
         {
             playerHealth = Mathf.Clamp(playerHealth + this.regeneration, 0.0f, maxHealth);
-            healthBar.SetHealth(playerHealth);
+            this.gameObject.GetComponent<UIManager>().PlayerUI.healthBar.SetHealth(playerHealth);
             this.regenerationCounter += 1;
             yield return new WaitForSeconds(1);
         }

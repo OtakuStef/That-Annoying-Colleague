@@ -6,10 +6,8 @@ using UnityTutorial.PlayerControl;
 public class SpeedPowerup : MonoBehaviour
 {
     private bool isTriggered = false;
-    public AudioSource pickupSound;
     private float speedTimeout = 1.0f;
     private float speedMultiplier = 1.0f;
-    public PowerUpUI powerUp;
 
     private void Start()
     {
@@ -22,19 +20,20 @@ public class SpeedPowerup : MonoBehaviour
         if (player.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true;
-            pickupSound.Play();
+            PowerupManager.Instance.powerUpAudio.Play();
             StartCoroutine(speedUp(player));
-            //Remove Powerup
+            this.transform.parent.gameObject.transform.position = new Vector3(0, -100, 0);
         }
     }
 
     private IEnumerator speedUp(Collider player)
     {
-        powerUp.SetImage("SPEED");
+        player.GetComponent<UIManager>().PlayerUI.powerUp.SetImage("SPEED");
         player.GetComponent<PlayerController>().setSpeedMultiplier(speedMultiplier);
         yield return new WaitForSeconds(speedTimeout);
         player.GetComponent<PlayerController>().setSpeedMultiplier(1.0f);
-        powerUp.ResetImage();
+        player.GetComponent<UIManager>().PlayerUI.powerUp.ResetImage();
+        Destroy(this.transform.parent.gameObject);
     }
 
 }

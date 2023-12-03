@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2978540421817523408}
   - component: {fileID: 587876285919371880}
   - component: {fileID: 900717374685009197}
-  - component: {fileID: 6127554312370688005}
   - component: {fileID: 7036203159524481626}
   m_Layer: 0
   m_Name: Plane (1)
@@ -85,28 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6127554312370688005
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254550120494637}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &7036203159524481626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,9 +204,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5732376304539497828}
   - component: {fileID: 1589462331640434533}
+  - component: {fileID: 8903548863605000318}
   m_Layer: 0
-  m_Name: TriggerSpeedup
-  m_TagString: PowerUp
+  m_Name: Trigger
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +248,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7801018, y: 1, z: 0.7493954}
   m_Center: {x: -0.0055389404, y: 0, z: 0.0109090805}
+--- !u!114 &8903548863605000318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298260870195074400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823cfad6b98be9347a1717b3fefde8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupSound: {fileID: 0}
+  powerUp: {fileID: 0}
 --- !u!1 &1805036704403020609
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +306,7 @@ GameObject:
   - component: {fileID: 8702035993617571493}
   m_Layer: 0
   m_Name: DamageUp
-  m_TagString: Untagged
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,7 +340,6 @@ GameObject:
   - component: {fileID: 4199716861760636166}
   - component: {fileID: 1027718488419556087}
   - component: {fileID: 6794159033993515870}
-  - component: {fileID: 8061746615708447292}
   - component: {fileID: 1244441948687187726}
   m_Layer: 0
   m_Name: Plane
@@ -422,28 +413,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8061746615708447292
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4736417740652304498}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1244441948687187726
 MonoBehaviour:
   m_ObjectHideFlags: 0

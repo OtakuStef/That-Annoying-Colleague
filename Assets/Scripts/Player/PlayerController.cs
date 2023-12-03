@@ -43,7 +43,6 @@ namespace UnityTutorial.PlayerControl
 
         //adding powerup boost variables
         private float speedMultiplier = 1f;
-        private float damageMutliplier = 1f;
         private  bool isShieldActive = false;
 
         private void Start() {
@@ -91,7 +90,6 @@ namespace UnityTutorial.PlayerControl
             {
                 targetSpeed = 1.5f;
                 targetSpeed *= speedMultiplier;
-                Debug.Log("Move pressed");
             }
             if (_inputManager.Move == Vector2.zero)  targetSpeed = 0;
             
@@ -203,16 +201,6 @@ namespace UnityTutorial.PlayerControl
         public void setSpeedMultiplier(float multiplier)
         {
             speedMultiplier = multiplier;
-        }
-
-        public void setDamageMultiplier(float multiplier)
-        {
-            damageMutliplier = multiplier;
-        }
-
-        public float getDamageMultiplier()
-        {
-            return damageMutliplier;
         }
 
         public void setShield(bool shieldActive)
