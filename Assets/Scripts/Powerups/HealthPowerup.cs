@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityTutorial.PlayerControl;
+using ThatAnnoyyingColleagueInput.PlayerControl;
 using static UnityEngine.Rendering.DebugUI;
 
 public class HealthPowerup : MonoBehaviour

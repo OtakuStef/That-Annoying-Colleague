@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityTutorial.PlayerControl;
+using ThatAnnoyyingColleagueInput.PlayerControl;
 
 public class DamagePowerup : MonoBehaviour
 {

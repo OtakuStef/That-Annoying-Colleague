@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
-namespace UnityTutorial.Manager
+namespace ThatAnnoyyingColleagueInput.Manager
 {
     public class InputManager : MonoBehaviour
     {
@@ -18,45 +18,45 @@ namespace UnityTutorial.Manager
         public bool ThrowObject { get; private set; }
         public float PumpPower { get; private set; }
 
-        private InputActionMap _currentMap;
-        private InputAction _moveAction;
-        private InputAction _lookAction;
-        private InputAction _runAction;
-        private InputAction _jumpAction;
-        private InputAction _crouchAction;
-        private InputAction _pickUpAction;
-        private InputAction _throwObjectAction;
-        private InputAction _pumpPowerAction;
+        private InputActionMap currentMap;
+        private InputAction moveAction;
+        private InputAction lookAction;
+        private InputAction runAction;
+        private InputAction jumpAction;
+        private InputAction crouchAction;
+        private InputAction pickUpAction;
+        private InputAction throwObjectAction;
+        private InputAction pumpPowerAction;
 
         private void Awake() {
             HideCursor();
-            _currentMap = PlayerInput.currentActionMap;
-            _moveAction = _currentMap.FindAction("Move");
-            _lookAction = _currentMap.FindAction("Look");
-            _runAction  = _currentMap.FindAction("Run");
-            _jumpAction = _currentMap.FindAction("Jump");
-            _crouchAction = _currentMap.FindAction("Crouch");
-            _pickUpAction = _currentMap.FindAction("PickUp");
-            _throwObjectAction = _currentMap.FindAction("ThrowObject");
-            _pumpPowerAction = _currentMap.FindAction("PumpPower");
+            currentMap = PlayerInput.currentActionMap;
+            moveAction = currentMap.FindAction("Move");
+            lookAction = currentMap.FindAction("Look");
+            runAction  = currentMap.FindAction("Run");
+            jumpAction = currentMap.FindAction("Jump");
+            crouchAction = currentMap.FindAction("Crouch");
+            pickUpAction = currentMap.FindAction("PickUp");
+            throwObjectAction = currentMap.FindAction("ThrowObject");
+            pumpPowerAction = currentMap.FindAction("PumpPower");
 
-            _moveAction.performed += onMove;
-            _lookAction.performed += onLook;
-            _runAction.performed += onRun;
-            _jumpAction.performed += onJump;
-            _crouchAction.started += onCrouch;
-            _pickUpAction.started += onPickUp;
-            _throwObjectAction.started += onThrowObject;
-            _pumpPowerAction.started += onPumpPower;
+            moveAction.performed += onMove;
+            lookAction.performed += onLook;
+            runAction.performed += onRun;
+            jumpAction.performed += onJump;
+            crouchAction.started += onCrouch;
+            pickUpAction.started += onPickUp;
+            throwObjectAction.started += onThrowObject;
+            pumpPowerAction.started += onPumpPower;
 
-            _moveAction.canceled += onMove;
-            _lookAction.canceled += onLook;
-            _runAction.canceled += onRun;
-            _jumpAction.canceled += onJump;
-            _crouchAction.canceled += onCrouch;
-            _pickUpAction.canceled += onPickUp;
-            _throwObjectAction.canceled += onThrowObject;
-            _pumpPowerAction.canceled += onPumpPower;
+            moveAction.canceled += onMove;
+            lookAction.canceled += onLook;
+            runAction.canceled += onRun;
+            jumpAction.canceled += onJump;
+            crouchAction.canceled += onCrouch;
+            pickUpAction.canceled += onPickUp;
+            throwObjectAction.canceled += onThrowObject;
+            pumpPowerAction.canceled += onPumpPower;
         }
 
         private void HideCursor()
@@ -101,11 +101,11 @@ namespace UnityTutorial.Manager
 
 
         private void OnEnable() {
-            _currentMap.Enable();
+            currentMap.Enable();
         }
 
         private void OnDisable() {
-            _currentMap.Disable();
+            currentMap.Disable();
         }
         
     }
