@@ -15,6 +15,8 @@ public class PowerupManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        powerUpAudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     //Global Variables
@@ -27,7 +29,7 @@ public class PowerupManager : MonoBehaviour
     public float damageDuration = 8.0f;
     private float player1DamageBooster = 1.0f;
     private float player2DamageBooster = 1.0f;
-    public AudioSource powerUpAudio;
+    private AudioManager powerUpAudioManager;
 
     public float getPlayer1DamageBooster() {  return player1DamageBooster; }
 
@@ -36,4 +38,10 @@ public class PowerupManager : MonoBehaviour
     public void setPlayer1DamageBooster(float damageBooster) { this.player1DamageBooster = damageBooster; }
 
     public void setPlayer2DamageBooster(float damageBooster) { this.player2DamageBooster = damageBooster; }
+
+    public void playPowerupPickupSound()
+    {
+        AudioClip pickupSound = powerUpAudioManager.powerup_pickup;
+        powerUpAudioManager.PlaySFX(pickupSound, false);
+    }
 }

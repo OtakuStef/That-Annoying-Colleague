@@ -21,7 +21,7 @@ public class HealthPowerup : MonoBehaviour
         if (player.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true;
-            PowerupManager.Instance.powerUpAudio.Play();
+            PowerupManager.Instance.playPowerupPickupSound();
             StartCoroutine(regenerate(player));
             this.transform.parent.gameObject.transform.position = new Vector3(0, -100, 0);
         }

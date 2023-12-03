@@ -20,7 +20,7 @@ public class SpeedPowerup : MonoBehaviour
         if (player.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true;
-            PowerupManager.Instance.powerUpAudio.Play();
+            PowerupManager.Instance.playPowerupPickupSound();
             StartCoroutine(speedUp(player));
             this.transform.parent.gameObject.transform.position = new Vector3(0, -100, 0);
         }

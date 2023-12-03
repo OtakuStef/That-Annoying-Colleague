@@ -18,7 +18,7 @@ public class ShieldPowerup : MonoBehaviour
         if (player.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true;
-            PowerupManager.Instance.powerUpAudio.Play();
+            PowerupManager.Instance.playPowerupPickupSound();
             StartCoroutine(setShield(player));
             this.transform.parent.gameObject.transform.position = new Vector3(0, -100, 0);
         }

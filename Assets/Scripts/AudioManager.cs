@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip steps_01;
     public AudioClip steps_running_01;
     public AudioClip got_hit_01;
+    public AudioClip powerup_pickup;
 
     private void Start()
     {

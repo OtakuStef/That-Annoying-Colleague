@@ -52,11 +52,10 @@ public class PlayerDamage : MonoBehaviour
 
             float minMagnitude = PlayerManager.Instance.minPlayerDamageMagnitude;
             float collisionMagnitude = collision.relativeVelocity.magnitude;
-            Debug.Log("Collision Magnitude: " + collisionMagnitude);
 
             if (collisionMagnitude > minMagnitude)
             {
-                audioManager.PlaySFX(gotHitSound, false); // play sound on getting hit
+                audioManager.PlaySFX(gotHitSound, false);
                 playerHealth -= calculatePlayerDamage(collision.gameObject, collisionMagnitude);
                 
                 Debug.Log("Player Health reduced to: " + playerHealth);
