@@ -6,10 +6,12 @@ public class AudioManager : MonoBehaviour
 {
     [Header("----- Audio Source -----")]
     [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource gameMusicSource;
     [SerializeField] AudioSource SFXSource;
 
     [Header("----- Audio Clip -----")]
     //public AudioClip background_main_menu;
+    public AudioClip game_music;
     public AudioClip background_busy_office;
     public AudioClip steps_01;
     public AudioClip steps_running_01;
@@ -19,7 +21,9 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         musicSource.clip = background_busy_office;
+        gameMusicSource.clip = game_music;
         musicSource.Play();
+        gameMusicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip, bool loop)
