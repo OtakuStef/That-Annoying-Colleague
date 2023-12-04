@@ -65,12 +65,14 @@ namespace ThatAnnoyyingColleagueInput.PlayerControl
             audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         }
 
+        //fixedupdate because of rigidbody
         private void FixedUpdate() {
             SampleGround();
             Move();
             HandleJump();
             HandleCrouch();
         }
+        //lateupdate updates after fixedupdate
         private void LateUpdate() {
             CamMovements();
         }
@@ -91,18 +93,21 @@ namespace ThatAnnoyyingColleagueInput.PlayerControl
                 targetSpeed = 1.5f;
                 targetSpeed *= speedMultiplier;
             }
+            //if nothing pressed
             if (inputManager.Move == Vector2.zero)  targetSpeed = 0;
             
 
             if (grounded)
             {
-                
+                //interpolate with lerp between to variables to make animations smooth
                 currentVelocity.x = Mathf.Lerp(currentVelocity.x, inputManager.Move.x * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
                 currentVelocity.y =  Mathf.Lerp(currentVelocity.y, inputManager.Move.y * targetSpeed, AnimBlendSpeed * Time.fixedDeltaTime);
 
+                //difference currentvelocity and player velocity
                 var xVelDifference = currentVelocity.x - playerRigidbody.velocity.x;
                 var zVelDifference = currentVelocity.y - playerRigidbody.velocity.z;
 
+                //addforce transform local velocity to global velocity
                 playerRigidbody.AddForce(transform.TransformVector(new Vector3(xVelDifference, 0 , zVelDifference)), ForceMode.VelocityChange);
 
                 if (isMoving)
@@ -127,7 +132,7 @@ namespace ThatAnnoyyingColleagueInput.PlayerControl
                 playerRigidbody.AddForce(transform.TransformVector(new Vector3(currentVelocity.x * AirResistance,0,currentVelocity.y * AirResistance)), ForceMode.VelocityChange);
             }
 
-
+            //makes animations right
             animator.SetFloat(xVelHash , currentVelocity.x);
             animator.SetFloat(yVelHash, currentVelocity.y);
         }
@@ -136,15 +141,17 @@ namespace ThatAnnoyyingColleagueInput.PlayerControl
         {
             if(!hasAnimator) return;
 
+            //get mouse inputs
             var MouseX = inputManager.Look.x;
             var MouseY = inputManager.Look.y;
             Camera.position = CameraRoot.position;
             
-            
+            //calculate vertical movement -> -minus because oposite of direction
             xRotation -= MouseY * MouseSensitivity * Time.smoothDeltaTime;
             xRotation = Mathf.Clamp(xRotation, UpperLimit, BottomLimit);
 
             Camera.localRotation = Quaternion.Euler(xRotation, 0 , 0);
+            //apply horizontal movement -> rotate player
             playerRigidbody.MoveRotation(playerRigidbody.rotation * Quaternion.Euler(0, MouseX * MouseSensitivity * Time.smoothDeltaTime, 0));
         }
 
