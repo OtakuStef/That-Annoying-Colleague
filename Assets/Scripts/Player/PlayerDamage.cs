@@ -61,7 +61,7 @@ public class PlayerDamage : MonoBehaviour
             {
                 if (!firstBloodAwarded)
                 {
-                    audioManager.PlaySFXOneShot(firstBlodSound);
+                    //audioManager.PlaySFXOneShot(firstBlodSound);
                     AchievementsManager.Instance.AwardFirstBloodAchievement(this, "First Blood");
                     firstBloodAwarded = true;
                 }
