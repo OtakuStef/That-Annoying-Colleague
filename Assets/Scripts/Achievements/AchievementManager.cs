@@ -1,24 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AchievementsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public static AchievementsManager Instance { get; private set; }
     private Dictionary<string, bool> achievementsUnlocked = new Dictionary<string, bool>();
 
+    AudioManager audioManager;
+
+    [SerializeField] GameObject AchievementUIPlayer1;
+    [SerializeField] GameObject AchievementUIPlayer2;
+
+    public TextMeshProUGUI firstBloodTextPlayer1;
+    public TextMeshProUGUI firstBloodTextPlayer2;
 
     private void Awake()
     {
@@ -48,15 +44,26 @@ public class AchievementsManager : MonoBehaviour
         return false;
     }
 
-    public void AwardAchievement(PlayerDamage player, string achievementName)
+    public void AwardFirstBloodAchievement(PlayerDamage player, string achievementName)
     {
-        if (!IsAchievementUnlocked(achievementName))
+        
+        Debug.Log($"Achievement Unlocked: {achievementName}");
+        if (player.gameObject.name == "Player1")
         {
-            achievementsUnlocked[achievementName] = true;
-            // player.AddAchievement(achievementName);
-            Debug.Log($"Achievement Unlocked: {achievementName}");
-            // ui?
+            StartCoroutine(ShowAchievement(AchievementUIPlayer2));
         }
+        else if (player.gameObject.name == "Player2")
+        {
+            StartCoroutine(ShowAchievement(AchievementUIPlayer1));
+        }
+        
+    }
+
+    private IEnumerator ShowAchievement(GameObject AchievementUIPlayer)
+    {
+        AchievementUIPlayer.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3);
+        AchievementUIPlayer.gameObject.SetActive(false);
     }
 
 }

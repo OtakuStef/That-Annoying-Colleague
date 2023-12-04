@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip steps_running_01;
     public AudioClip got_hit_01;
     public AudioClip powerup_pickup;
+    public AudioClip first_blood;
 
     private void Start()
     {
@@ -33,6 +34,11 @@ public class AudioManager : MonoBehaviour
         SFXSource.clip = clip;
         SFXSource.loop = loop;
         SFXSource.Play();
+    }
+
+    public void PlaySFXOneShot(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
     }
     public void StopSFX()
     {

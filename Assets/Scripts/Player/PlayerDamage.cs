@@ -21,6 +21,9 @@ public class PlayerDamage : MonoBehaviour
     // add audio
     AudioManager audioManager;
 
+    // add achievement tracker
+    private bool firstBloodAwarded = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,12 +52,19 @@ public class PlayerDamage : MonoBehaviour
         {
             // add sound on getting hit
             AudioClip gotHitSound = audioManager.got_hit_01;
+            AudioClip firstBlodSound = audioManager.first_blood;
 
             float minMagnitude = PlayerManager.Instance.minPlayerDamageMagnitude;
             float collisionMagnitude = collision.relativeVelocity.magnitude;
 
             if (collisionMagnitude > minMagnitude)
             {
+                if (!firstBloodAwarded)
+                {
+                    audioManager.PlaySFXOneShot(firstBlodSound);
+                    AchievementsManager.Instance.AwardFirstBloodAchievement(this, "First Blood");
+                    firstBloodAwarded = true;
+                }
                 audioManager.PlaySFX(gotHitSound, false);
                 playerHealth -= calculatePlayerDamage(collision.gameObject, collisionMagnitude);
                 

@@ -52,14 +52,14 @@ public class RoundManager : MonoBehaviour
             {
                 WinnerOfLastRound = player1;
                 winner.text = "Winner is Player 1";
-                CheckForSurvivor(player1);
+                //CheckForSurvivor(player1);
                 //Debug.Log("Winner is Player 1.");
             }
             else if (player2.playerHealth > player1.playerHealth)
             {
                 WinnerOfLastRound = player2;
                 winner.text = "Winner is Player 2";
-                CheckForSurvivor(player2);
+                //CheckForSurvivor(player2);
                 //Debug.Log("Winner is Player 2.");
             }
             else
@@ -85,7 +85,7 @@ public class RoundManager : MonoBehaviour
         }
         return false;
     }
-
+    /*
     private void CheckForSurvivor(PlayerDamage player)
     {
         float tenPercentHealth = player.playerHealth * 0.1f;
@@ -94,7 +94,7 @@ public class RoundManager : MonoBehaviour
             AchievementsManager.Instance.AwardAchievement(player, "Survivor");
         }
     }
-
+    */
     public void Home()
     {
         Time.timeScale = 1f;
