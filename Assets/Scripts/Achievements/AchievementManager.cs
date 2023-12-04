@@ -46,16 +46,20 @@ public class AchievementsManager : MonoBehaviour
 
     public void AwardFirstBloodAchievement(PlayerDamage player, string achievementName)
     {
-        
-        Debug.Log($"Achievement Unlocked: {achievementName}");
-        if (player.gameObject.name == "Player1")
+        if (!IsAchievementUnlocked(achievementName))
         {
-            StartCoroutine(ShowAchievement(AchievementUIPlayer2));
+            Debug.Log($"Achievement Unlocked: {achievementName}");
+            if (player.gameObject.name == "Player1")
+            {
+                StartCoroutine(ShowAchievement(AchievementUIPlayer2));
+            }
+            else if (player.gameObject.name == "Player2")
+            {
+                StartCoroutine(ShowAchievement(AchievementUIPlayer1));
+            }
         }
-        else if (player.gameObject.name == "Player2")
-        {
-            StartCoroutine(ShowAchievement(AchievementUIPlayer1));
-        }
+
+
         
     }
 
